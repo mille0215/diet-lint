@@ -1,0 +1,14 @@
+# ruff の設定（python -m ruff check . / python -m ruff format . で使う）
+line-length = 120
+target-version = "py310"
+# ツールは tools/ にある。diet_lint を自前のモジュールとして import 順を判定させる
+src = [".", "tools"]
+
+[lint]
+# 既定のルールに加えて、pycodestyle / import 順 / バグの恐れ / 新しい書き方 / docstring を調べる
+extend-select = ["E", "W", "I", "B", "UP", "SIM", "D"]
+# D415: docstring の1行目を "." "?" "!" で終えるルール。日本語の句点「。」は認められないので無効にする
+ignore = ["D415"]
+
+[lint.pydocstyle]
+convention = "google"

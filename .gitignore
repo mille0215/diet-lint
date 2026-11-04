@@ -1,0 +1,8 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.ruff_cache/
+
+# ツールのキャッシュ（ファイルの絶対パスを含む）
+.diet_cache.json

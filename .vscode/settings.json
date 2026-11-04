@@ -1,0 +1,19 @@
+{
+    // 保存時に「DIEt: 保存時（整形＋lint）」タスクを実行し、結果を「問題」パネルに出す
+    // 要拡張: Trigger Task on Save (Gruntfuggly.triggertaskonsave)
+    "triggerTaskOnSave.tasks": {
+        "DIEt: 保存時（整形＋lint）": ["diet_templates/**/*.js", "tools/samples/**/*.js"]
+    },
+    "triggerTaskOnSave.restart": true,
+
+    // 整形はタスク側で行うので、VSCode 標準の保存時整形はオフ
+    "editor.formatOnSave": false,
+
+    // VSCode 標準の JS チェックは [DIEt] タグを構文エラーとして誤検出するのでオフ（lint は diet_tool.py が行う）
+    // 補完やホバーは引き続き使える。新しい VSCode は js/ts.validate.enabled、古い VSCode は javascript.validate.enable
+    // VSCode 標準の JavaScript/TypeScript チェックを無効化
+    "js/ts.validate.enabled": false,
+
+    // Python 拡張を使う場合も、タスクと同じ venv（.venv）を使う
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+}

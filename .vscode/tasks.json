@@ -1,0 +1,106 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "DIEt: 保存時（整形＋lint）",
+            "type": "process",
+            "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "args": [
+                "${workspaceFolder}/tools/diet_tool.py",
+                "save",
+                "${file}"
+            ],
+            "presentation": {
+                "reveal": "never",
+                "echo": false,
+                "showReuseMessage": false
+            },
+            "problemMatcher": {
+                "owner": "diet-biome",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^::(error|warning|notice) title=([^,]+),file=(.+?),line=(\\d+),endLine=(\\d+),col=(\\d+),endColumn=(\\d+)::(.*)$",
+                    "severity": 1,
+                    "code": 2,
+                    "file": 3,
+                    "line": 4,
+                    "endLine": 5,
+                    "column": 6,
+                    "endColumn": 7,
+                    "message": 8
+                }
+            }
+        },
+        {
+            "label": "DIEt: 整形（現在のファイル）",
+            "type": "process",
+            "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "args": [
+                "${workspaceFolder}/tools/diet_tool.py",
+                "format",
+                "${file}"
+            ],
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "DIEt: lint（現在のファイル）",
+            "type": "process",
+            "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "args": [
+                "${workspaceFolder}/tools/diet_tool.py",
+                "lint",
+                "${file}"
+            ],
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": {
+                "owner": "diet-biome",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^::(error|warning|notice) title=([^,]+),file=(.+?),line=(\\d+),endLine=(\\d+),col=(\\d+),endColumn=(\\d+)::(.*)$",
+                    "severity": 1,
+                    "code": 2,
+                    "file": 3,
+                    "line": 4,
+                    "endLine": 5,
+                    "column": 6,
+                    "endColumn": 7,
+                    "message": 8
+                }
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "DIEt: venv 作成",
+            "type": "process",
+            "command": "python",
+            "args": [
+                "-m",
+                "venv",
+                "${workspaceFolder}/.venv"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "DIEt: セットアップ（パッケージ導入）",
+            "type": "process",
+            "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "args": [
+                "-m",
+                "pip",
+                "install",
+                "-r",
+                "${workspaceFolder}/tools/requirements.txt"
+            ],
+            "dependsOn": "DIEt: venv 作成",
+            "problemMatcher": []
+        }
+    ]
+}

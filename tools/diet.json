@@ -1,0 +1,37 @@
+{
+    "format": {
+        "indent_size": 4,
+        "indent_char": " ",
+        "eol": "auto",
+        "end_with_newline": true,
+        "preserve_newlines": true,
+        "max_preserve_newlines": 2,
+        "brace_style": "collapse",
+        "space_after_anon_function": false,
+        "keep_array_indentation": false,
+        "wrap_line_length": 0
+    },
+    "globals": ["dsm", "dtm", "$"],
+    "rules": {
+        "no-es6": "error",
+        "no-undef": "error",
+        "no-unused-vars": "warning",
+        "eqeqeq": "warning",
+        "no-dupe-keys": "error",
+        "no-unreachable": "warning",
+        "no-debugger": "warning",
+        "no-redeclare": "warning",
+        "no-dupe-global": "warning",
+        "no-shadow": "warning",
+        "semi": "error"
+    },
+    "options": {
+        "unusedCheckTopLevel": false,
+        "eqeqeqAllowNull": false,
+        "tagIndent": "never",
+        "siblingGlobals": true,
+        "lintScope": "folder",
+        "reloadWaitMs": 800,
+        "redeclareVars": false
+    }
+}
